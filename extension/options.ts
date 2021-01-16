@@ -2,7 +2,7 @@ var browser: Browser = browser || chrome;
 
 browser.storage.local.get(['theme'], obj => {
 
-    var theme: string = obj.theme || 'green-red';
+    var theme: string = obj.theme || 'cyan-orange';
     var themeSettingsContainer = document.getElementById('theme-settings');
 
     [
@@ -13,8 +13,8 @@ browser.storage.local.get(['theme'], obj => {
         themeSettingsContainer.insertAdjacentHTML('beforeend', `
         <label class="shinigami-eyes-theme shinigami-eyes-theme-${x}">
         <input type="radio" name="selected-theme" ${x == theme ? 'checked' : ''} data-theme="${x}">
-        <span class="assigned-label-t-friendly">T-Friendly</span>,
-        <span class="assigned-label-transphobic">Anti-trans</span>,
+        <span class="assigned-label-da-friendly">Disability-friendly</span>,
+        <span class="assigned-label-ableist">Ableist</span>,
         <span class="assigned-label-unknown" title="Using Facebook as an example for unknown links.">Unknown (fb)</span>
         </label>
         `);
