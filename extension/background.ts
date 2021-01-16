@@ -352,13 +352,13 @@ browser.runtime.onMessage.addListener<ShinigamiEyesMessage, ShinigamiEyesMessage
         return;
     }
     const response: LabelMap = {};
-    const transphobic = message.myself && bloomFilters.filter(x => x.name == 'transphobic')[0].test(message.myself);
+    const ableist = message.myself && bloomFilters.filter(x => x.name == 'ableist')[0].test(message.myself);
     for (const id of message.ids) {
         if (overrides[id] !== undefined) {
             response[id] = overrides[id];
             continue;
         }
-        if (transphobic) {
+        if (ableist) {
             if (id == message.myself) continue;
             let sum = 0;
             for (let i = 0; i < id.length; i++) {
@@ -374,8 +374,8 @@ browser.runtime.onMessage.addListener<ShinigamiEyesMessage, ShinigamiEyesMessage
     sendResponse(response);
 });
 
-loadBloomFilter('transphobic');
-loadBloomFilter('t-friendly');
+loadBloomFilter('ableist');
+loadBloomFilter('da-friendly');
 
 
 
@@ -415,8 +415,8 @@ function createContextMenu(text: string, id: ContextMenuCommand) {
     });
 }
 
-createContextMenu('Mark as anti-trans', 'mark-transphobic');
-createContextMenu('Mark as t-friendly', 'mark-t-friendly');
+createContextMenu('Mark as ableist', 'mark-ableist');
+createContextMenu('Mark as disability-friendly', 'mark-da-friendly');
 createContextMenu('Clear', 'mark-none');
 browser.contextMenus.create({ type: 'separator' });
 createContextMenu('Settings', 'options');
