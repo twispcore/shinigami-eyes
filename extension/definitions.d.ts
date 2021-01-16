@@ -10,7 +10,7 @@ interface LabelToSolve {
     element: HTMLAnchorElement
     identifier: string
 }
-type LabelKind = 't-friendly' | 'transphobic' | 'none' | '' | 'bad-identifier';
+type LabelKind = 'da-friendly' | 'ableist' | 'none' | '' | 'bad-identifier';
 interface ShinigamiEyesSubmission {
     mark?: LabelKind
     url?: string
@@ -43,5 +43,5 @@ type LabelMap = { [identifier: string]: LabelKind };
 interface ShinigamiEyesMessage extends ShinigamiEyesSubmission, ShinigamiEyesCommand {
 }
 
-type ContextMenuCommand = 'mark-t-friendly' | 'mark-transphobic' | 'mark-none' | 'help' | 'options';
+type ContextMenuCommand = 'mark-da-friendly' | 'mark-ableist' | 'mark-none' | 'help' | 'options';
 type BadIdentifierReason = 'SN' | 'AR';
