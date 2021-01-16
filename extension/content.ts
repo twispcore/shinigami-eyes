@@ -28,13 +28,13 @@ function fixupSiteStyles() {
         `);
     } else if (domainIs(hostname, 'tumblr.com')) {
         addStyleSheet(`
-            .assigned-label-transphobic { outline: 2px solid var(--ShinigamiEyesTransphobic) !important; }
-            .assigned-label-t-friendly { outline: 1px solid var(--ShinigamiEyesTFriendly) !important; }
+            .assigned-label-ableist { outline: 2px solid var(--ShinigamiEyesAbleist) !important; }
+            .assigned-label-da-friendly { outline: 1px solid var(--ShinigamiEyesDAFriendly) !important; }
         `);
     } else if (hostname == 'rationalwiki.org' || domainIs(hostname, 'wikipedia.org')) {
         addStyleSheet(`
-            .assigned-label-transphobic { outline: 1px solid var(--ShinigamiEyesTransphobic) !important; }
-            .assigned-label-t-friendly { outline: 1px solid var(--ShinigamiEyesTFriendly) !important; }
+            .assigned-label-ableist { outline: 1px solid var(--ShinigamiEyesAbleist) !important; }
+            .assigned-label-da-friendly { outline: 1px solid var(--ShinigamiEyesDAFriendly) !important; }
         `);
     } else if (hostname == 'twitter.com') {
         myself = getIdentifier(<HTMLAnchorElement>document.querySelector('.DashUserDropdown-userInfo a'));
@@ -626,8 +626,8 @@ function displayConfirmation(identifier: string, label: LabelKind, badIdentifier
 
     const confirmation = document.createElement('div');
     const background =
-        label == 't-friendly' ? '#eaffcf' :
-            label == 'transphobic' ? '#f5d7d7' :
+        label == 'da-friendly' ? '#eaffcf' :
+            label == 'ableist' ? '#f5d7d7' :
                 '#eeeeee';
     confirmation.style.cssText = `transition: opacity 7s ease-in-out !important; opacity: 1; position: fixed; padding: 30px 15px; z-index: 99999999; white-space: pre-wrap; top: 200px; left: 30%; right: 30%; background: ${background}; color: black; font-weight: bold; font-family: Arial; box-shadow: 0px 5px 10px #ddd; border: 1px solid #ccc; font-size: 11pt;`;
     let text: string;
@@ -645,8 +645,8 @@ function displayConfirmation(identifier: string, label: LabelKind, badIdentifier
 `;
     } else {
         text = identifier + (
-            label == 't-friendly' ? ' will be displayed as trans-friendly on search engines and social networks.' :
-                label == 'transphobic' ? ' will be displayed as anti-trans on search engines and social networks.' :
+            label == 'da-friendly' ? ' will be displayed as disability-friendly on search engines and social networks.' :
+                label == 'ableist' ? ' will be displayed as ableist on search engines and social networks.' :
                     ' has been cleared.'
         );
     }
